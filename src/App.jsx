@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./App.css";
 import { AnimatePresence, motion } from "framer-motion";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
 
+  const inputRef = useRef(null);
+
   const addNewTodo = (e) => {
+    if(!e.target.value) return;
     if (e.code === "Enter") {
       setTodoList([...todoList, e.target.value]);
       e.target.value = "";
@@ -18,6 +21,12 @@ function App() {
     setTodoList([...temp]);
   };
 
+  const handleClick = () => {
+    if(!inputRef.current.value) return;
+    setTodoList([...todoList, inputRef.current.value]);
+    inputRef.current.value="";
+  }
+
   return (
     <div>
       <div className="page-container">
@@ -29,7 +38,9 @@ function App() {
               type="text"
               className="todo-input"
               onKeyDown={addNewTodo}
+              ref={inputRef}
             />
+            <button className="send-btn" onClick={handleClick}>Add</button>
           </div>
           <div className="todo-card-body">
             <AnimatePresence mode="popLayout">

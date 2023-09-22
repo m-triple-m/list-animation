@@ -1,5 +1,5 @@
 .page-container{
-  margin: 100px 200px;
+  margin: 50px 200px;
 }
 
 .title-text{
@@ -14,12 +14,17 @@
   border-radius: 10px;
   overflow: hidden;
   transition-duration: 0.3s;
+  max-height: 70vh;
+  overflow: auto;
 }
 
 .todo-card-header{
   padding: 2%;
   background-color:blueviolet;
   border: 2px solid blueviolet;
+
+  display: flex;
+  
 }
 
 .todo-card-body{
@@ -69,8 +74,24 @@
   color: #8400ff88;
 }
 
+.send-btn{
+  background-color: rgb(27, 72, 255);
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+@media screen and (max-width : 800px) {
+  .page-container{
+    margin: 10%;
+  }
+}
+
 @media screen and (max-width : 600px) {
   .page-container{
     margin: 5%;
   }
 }
+
